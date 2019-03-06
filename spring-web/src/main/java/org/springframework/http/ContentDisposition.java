@@ -53,7 +53,7 @@ public final class ContentDisposition {
 
 	@Nullable
 	private final Charset charset;
-
+	
 	@Nullable
 	private final Long size;
 

@@ -79,11 +79,13 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
 
 	/**
 	 * Indicates that the validation should be disabled.
+	 * 指示应禁用验证。
 	 */
 	public static final int VALIDATION_NONE = XmlValidationModeDetector.VALIDATION_NONE;
 
 	/**
 	 * Indicates that the validation mode should be detected automatically.
+	 * 指示应自动检测验证模式
 	 */
 	public static final int VALIDATION_AUTO = XmlValidationModeDetector.VALIDATION_AUTO;
 
@@ -445,9 +447,11 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
 	 */
 	protected int getValidationModeForResource(Resource resource) {
 		int validationModeToUse = getValidationMode();
+		//如果手动指定了验证模式则使用指定的验证模式
 		if (validationModeToUse != VALIDATION_AUTO) {
 			return validationModeToUse;
 		}
+		//如果未指定则使用自动检测
 		int detectedMode = detectValidationMode(resource);
 		if (detectedMode != VALIDATION_AUTO) {
 			return detectedMode;

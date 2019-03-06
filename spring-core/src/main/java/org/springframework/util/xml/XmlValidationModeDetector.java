@@ -95,6 +95,7 @@ public class XmlValidationModeDetector {
 			String content;
 			while ((content = reader.readLine()) != null) {
 				content = consumeCommentTokens(content);
+				//如果读取的行是空行或者是注释这跳过
 				if (this.inComment || !StringUtils.hasText(content)) {
 					continue;
 				}
@@ -102,6 +103,9 @@ public class XmlValidationModeDetector {
 					isDtdValidated = true;
 					break;
 				}
+				//判断是否是开始符号<,验证模式一定在开始符号之前可以确定
+				// xml文件第一行是声明 <?xml version="1.0" encoding="UTF-8"?> 不是开始符号，
+				// <的第二个字符是字母则判断为开始符号，<bean>之类的
 				if (hasOpeningTag(content)) {
 					// End of meaningful data...
 					break;
@@ -138,6 +142,7 @@ public class XmlValidationModeDetector {
 		}
 		int openTagIndex = content.indexOf('<');
 		return (openTagIndex > -1 && (content.length() > openTagIndex + 1) &&
+				//判断指定字符是否为字母，判断<的下一个字符是否是字母，如果是，则是开始符号
 				Character.isLetter(content.charAt(openTagIndex + 1)));
 	}
 

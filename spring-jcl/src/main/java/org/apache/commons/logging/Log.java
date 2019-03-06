@@ -106,7 +106,7 @@ public interface Log {
 	boolean isDebugEnabled();
 
 	/**
-	 * Is trace logging currently enabled?
+	 * Is trace logging currently enabled? 当前是否启用跟踪日志记录?
 	 * <p>Call this method to prevent having to perform expensive operations
 	 * (for example, <code>String</code> concatenation)
 	 * when the log level is more than trace.
