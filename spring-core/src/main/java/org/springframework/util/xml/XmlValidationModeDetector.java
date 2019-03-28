@@ -143,6 +143,7 @@ public class XmlValidationModeDetector {
 		int openTagIndex = content.indexOf('<');
 		return (openTagIndex > -1 && (content.length() > openTagIndex + 1) &&
 				//判断指定字符是否为字母，判断<的下一个字符是否是字母，如果是，则是开始符号
+				// 类似于<bean>则是开始符号，而<?则不是
 				Character.isLetter(content.charAt(openTagIndex + 1)));
 	}
 
